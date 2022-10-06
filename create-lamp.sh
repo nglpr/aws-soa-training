@@ -159,7 +159,7 @@ instanceDetails=$(aws ec2 run-instances \
 --image-id $imageId \
 --count 1 \
 --instance-type $instanceType \
---region us-west-2 \
+--region $region \
 --subnet-id $subnetId \
 --security-group-ids $securityGroup \
 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=mompopcafeserver}]' \
