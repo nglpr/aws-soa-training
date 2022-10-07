@@ -1,0 +1,7 @@
+aws lambda create-function \
+--function-name salesAnalysisReport \
+--runtime python3.7 \
+--zip-file fileb://salesAnalysisReport.zip \
+--handler salesAnalysisReport.lambda_handler \
+--region us-east-1 \
+--role arn:aws:iam::083903912599:role/salesAnalysisReportRole
