@@ -5,3 +5,15 @@ aws lambda create-function \
 --handler salesAnalysisReport.lambda_handler \
 --region us-east-1 \
 --role arn:aws:iam::083903912599:role/salesAnalysisReportRole
+
+
+# Get LogicalResourceId
+LogicalResourceId=$(aws cloudformation describe-stack-resources \
+--stack-name myStack \
+--query 'StackResources[?ResourceStatus == `DELETE_FAILED`].LogicalResourceId' \
+--output text)
+echo $LogicalResourceId
+
+# Retaining the bucket with retaining MyBucket
+aws cloudformation delete-stack --stack-name myStack \
+--retain-resources $LogicalResourceId
